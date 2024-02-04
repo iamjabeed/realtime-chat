@@ -1,0 +1,11 @@
+{
+  "name": "mern-chat",
+  "version": "1.0.0",
+  "description": "This is a real-time chat website that allows users to connect with each other and chat in real-time. It was built using the MERN stack (MongoDB, Express.js, React.js, and Node.js), Socket.io, Redux Toolkit, and Tailwind CSS.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jabeed Syed",
+  "license": "ISC"
+}
