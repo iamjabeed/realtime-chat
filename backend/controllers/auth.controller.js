@@ -1,6 +1,8 @@
 import asyncHandler from "express-async-handler";
 import bcrypt from "bcryptjs";
+
 import User from "../models/user.model.js";
+import generateToken from "../utils/generateToken.js";
 
 // @desc    Register new user
 // @route   POST /api/auth/signup
@@ -37,6 +39,7 @@ export const signup = asyncHandler(async (req, res) => {
   });
 
   try {
+    generateToken(res, newUser._id);
     await newUser.save();
 
     res.status(201).json({
@@ -58,11 +61,45 @@ export const signup = asyncHandler(async (req, res) => {
 // @desc    Login user
 // @route   POST /api/auth/login
 export const login = asyncHandler(async (req, res) => {
-  res.send("Login route");
+  const { username, password } = req.body;
+  try {
+    //verify user exists
+    const existingUser = await User.findOne({ username });
+    if (existingUser) {
+      const isPasswordValid = await bcrypt.compare(
+        password,
+        existingUser?.password
+      );
+      if (isPasswordValid) {
+        generateToken(res, existingUser._id);
+        res.status(200).json({
+          _id: existingUser._id,
+          fullname: existingUser.fullname,
+          username: existingUser.username,
+          profilePic: existingUser.profilePic,
+        });
+        return;
+      }
+    } else {
+      res.status(400);
+      throw new Error("User not found");
+    }
+  } catch (error) {
+    res.status(500).json({
+      message: "Internal server error",
+      error: error.message,
+    });
+    console.log(error.message);
+  }
 });
 
-// @desc   Logoutuser
+// @desc   Logout user
 // @route   POST /api/auth/logout
 export const logout = asyncHandler(async (req, res) => {
-  res.send("Logout route");
+  res.cookie("jwt", "", {
+    httpOnly: true,
+    expires: new Date(0),
+  });
+
+  res.status(200).json({ message: "Logged out successfully" });
 });
