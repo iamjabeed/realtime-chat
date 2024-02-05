@@ -12,8 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("api/auth", authRoutes);
-
-// console.clear();
+// Correct the path for authRoutes
+app.use("/api/auth", authRoutes);
 
 app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
