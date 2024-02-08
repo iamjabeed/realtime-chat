@@ -7,7 +7,7 @@ import generateToken from "../utils/generateToken.js";
 // @desc    Register new user
 // @route   POST /api/auth/signup
 export const signup = asyncHandler(async (req, res) => {
-  const { fullname, username, password, confirmPassword, gender } = req.body;
+  const { fullName, username, password, confirmPassword, gender } = req.body;
 
   if (!username || !password || !gender) {
     res.status(400);
@@ -31,7 +31,7 @@ export const signup = asyncHandler(async (req, res) => {
 
   // Create new user
   const newUser = new User({
-    fullname,
+    fullName,
     username,
     password: hashedPass,
     gender,
@@ -45,7 +45,7 @@ export const signup = asyncHandler(async (req, res) => {
 
     res.status(201).json({
       _id: newUser._id,
-      fullname: newUser.fullname,
+      fullName: newUser.fullName,
       username: newUser.username,
       gender: newUser.gender,
       profilePic: newUser.profilePic,
@@ -75,7 +75,7 @@ export const login = asyncHandler(async (req, res) => {
         generateToken(existingUser?._id, res);
         res.status(200).json({
           _id: existingUser._id,
-          fullname: existingUser.fullname,
+          fullName: existingUser.fullName,
           username: existingUser.username,
           profilePic: existingUser.profilePic,
         });
