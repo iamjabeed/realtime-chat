@@ -1,3 +1,5 @@
+import { Routes, Route } from "react-router-dom";
+
 import MessageContainer from "./components/messages/MessageContainer.jsx";
 import Sidebar from "./components/sidebar/Sidebar.jsx";
 import Login from "./pages/auth/Login.jsx";
@@ -6,11 +8,13 @@ import Home from "./pages/home/Home.jsx";
 
 function App() {
   return (
-    <div className="h-screen bg-black/60">
-      <h1 className="flex justify-center items-center text-2xl py-4 text-red-700 font-bold">
-        Chat app
-      </h1>
-      <Home />
+    <div className="p-4 h-screen flex items-center justify-center">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+      </Routes>
+      {/* <Toaster /> */}
     </div>
   );
 }
