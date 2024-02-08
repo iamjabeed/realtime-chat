@@ -39,7 +39,8 @@ export const signup = asyncHandler(async (req, res) => {
   });
 
   try {
-    generateToken(res, newUser._id);
+    generateToken(newUser?._id, res);
+    // console.log("new user id", newUser._id);
     await newUser.save();
 
     res.status(201).json({
@@ -71,7 +72,7 @@ export const login = asyncHandler(async (req, res) => {
         existingUser?.password
       );
       if (isPasswordValid) {
-        generateToken(res, existingUser._id);
+        generateToken(existingUser?._id, res);
         res.status(200).json({
           _id: existingUser._id,
           fullname: existingUser.fullname,
