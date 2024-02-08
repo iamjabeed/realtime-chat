@@ -6,7 +6,7 @@ import Home from "./pages/home/Home.jsx";
 
 function App() {
   return (
-    <div className="h-screen bg-gray-400">
+    <div className="h-screen bg-black/60">
       <h1 className="flex justify-center items-center text-2xl py-4 text-red-700 font-bold">
         Chat app
       </h1>
