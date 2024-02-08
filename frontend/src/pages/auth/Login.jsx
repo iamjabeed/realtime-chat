@@ -7,7 +7,7 @@ const Login = () => {
           <span className="text-blue-500"> ChatApp</span>
         </h1>
 
-        <form className=" mx-auto">
+        <form className="mx-auto">
           <div>
             <label className="label p-2">
               <span className="text-base label-text">Username</span>
