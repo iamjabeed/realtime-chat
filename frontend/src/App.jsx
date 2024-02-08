@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
-import MessageContainer from "./components/messages/MessageContainer.jsx";
-import Sidebar from "./components/sidebar/Sidebar.jsx";
 import Login from "./pages/auth/Login.jsx";
 import SignUp from "./pages/auth/Signup.jsx";
 import Home from "./pages/home/Home.jsx";
@@ -14,7 +13,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
-      {/* <Toaster /> */}
+      <Toaster />
     </div>
   );
 }

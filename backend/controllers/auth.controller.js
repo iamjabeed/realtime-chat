@@ -13,6 +13,9 @@ export const signup = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Invalid user, Please fill all the required fields");
   }
+  if (password !== confirmPassword) {
+    return res.status(400).json({ error: "Passwords don't match" });
+  }
 
   // Check if the user already exists
   const userExists = await User.findOne({ username });
