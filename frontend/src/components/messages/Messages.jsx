@@ -2,10 +2,12 @@ import { useEffect, useRef } from "react";
 import useGetMessages from "../../hooks/useGetMessages.js";
 import Message from "./Message.jsx";
 import MessageSkeleton from "../shimmerUi/MessageSkeleton.jsx";
+import useListenMessages from "../../hooks/useListenMessages.js";
 
 const Messages = () => {
   const { loading, messages } = useGetMessages();
   // console.log(messages);
+  useListenMessages();
   const lastMessageRef = useRef();
 
   // To scroll down to new messages

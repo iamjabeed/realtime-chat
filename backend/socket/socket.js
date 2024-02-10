@@ -12,6 +12,10 @@ const io = new Server(server, {
   },
 });
 
+export const getReceiverSocketId = (receiverId) => {
+  return userSocketMap[receiverId];
+};
+
 const userSocketMap = {}; // {userId: socketId}
 
 io.on("connection", (socket) => {
@@ -26,7 +30,7 @@ io.on("connection", (socket) => {
   // socket.on() is used to listen to the events. can be used both on client and server side
   socket.on("disconnect", () => {
     console.log("user disconnected", socket.id);
-    // delete userSocketMap[userId];
+    delete userSocketMap[userId];
     io.emit("getOnlineUsers", Object.keys(userSocketMap));
   });
 });
