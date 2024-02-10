@@ -23,11 +23,11 @@ const useLogin = () => {
 
       localStorage.setItem("chat-user", JSON.stringify(data));
       setAuthUser(data);
+      toast.success("Successfully logged in!");
     } catch (error) {
       toast.error(error?.message);
     } finally {
       setLoading(false);
-      toast.success("Successfully logged in!");
     }
   };
 

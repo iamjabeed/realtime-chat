@@ -64,38 +64,32 @@ export const signup = asyncHandler(async (req, res) => {
 
 // @desc    Login user
 // @route   POST /api/auth/login
-export const login = asyncHandler(async (req, res) => {
-  const { username, password } = req.body;
+export const login = async (req, res) => {
   try {
-    //verify user exists
-    const existingUser = await User.findOne({ username });
-    if (existingUser) {
-      const isPasswordValid = await bcrypt.compare(
-        password,
-        existingUser?.password
-      );
-      if (isPasswordValid) {
-        generateToken(existingUser?._id, res);
-        res.status(200).json({
-          _id: existingUser._id,
-          fullName: existingUser.fullName,
-          username: existingUser.username,
-          profilePic: existingUser.profilePic,
-        });
-        return;
-      }
-    } else {
-      res.status(400);
-      throw new Error("User not found");
+    const { username, password } = req.body;
+    const user = await User.findOne({ username });
+    const isPasswordCorrect = await bcrypt.compare(
+      password,
+      user?.password || ""
+    );
+
+    if (!user || !isPasswordCorrect) {
+      return res.status(400).json({ error: "Invalid username or password" });
     }
-  } catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      error: error.message,
+
+    generateToken(user._id, res);
+
+    res.status(200).json({
+      _id: user._id,
+      fullName: user.fullName,
+      username: user.username,
+      profilePic: user.profilePic,
     });
-    console.log(error.message);
+  } catch (error) {
+    console.log("Error in login controller", error.message);
+    res.status(500).json({ error: "Internal Server Error" });
   }
-});
+};
 
 // @desc   Logout user
 // @route   POST /api/auth/logout

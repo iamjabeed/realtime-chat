@@ -9,8 +9,17 @@ body,
   width: 100%;
 }
 
+:root {
+  --black-color: #000000;
+  --white-color: #ffffff;
+  --pink-color: #f72798;
+  --orange-color: #f57d1f;
+  --yellow-color: #ebf400;
+}
+
 body {
-  color: white;
+  color: var(--white-color);
+  background: var(--black-color);
 }
 
 /* dark mode looking scrollbar */
