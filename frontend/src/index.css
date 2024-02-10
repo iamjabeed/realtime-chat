@@ -61,3 +61,20 @@ body {
     transform: translate3d(4px, 0, 0);
   }
 }
+
+.offlineStatus:before {
+  content: "";
+  position: absolute;
+  z-index: 10;
+  display: block;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: red;
+  outline-style: solid;
+  outline-width: 2px;
+  outline-color: red;
+  width: 15%;
+  height: 15%;
+  top: 10%;
+  right: 10%;
+}
