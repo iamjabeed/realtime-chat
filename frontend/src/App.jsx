@@ -9,7 +9,7 @@ import { useAuthContext } from "./context/AuthContext.jsx";
 function App() {
   const { authUser } = useAuthContext();
   return (
-    <div className="">
+    <div className="bg-black">
       <Routes>
         <Route
           path="/"

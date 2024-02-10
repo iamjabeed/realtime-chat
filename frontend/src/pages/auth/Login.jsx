@@ -12,7 +12,7 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full sm:max-w-md 2xl:max-w-xl flex flex-col items-center justify-center mx-auto h-screen px-4">
+    <div className="w-full sm:max-w-md 2xl:max-w-xl flex flex-col items-center justify-center mx-auto h-full min-h-screen px-4">
       <div className="w-full rounded-lg border border-gray-400/15 p-4">
         <div className="">
           <h1 className="text-2xl font-extrabold text-gray-500 mb-2">
@@ -34,7 +34,7 @@ const Login = () => {
             <input
               type="text"
               placeholder="Enter username"
-              className="w-full p-2 border rounded bg-[#010102] placeholder-[#eaeaeab9]  text-[#F6F6F6] outline-none border-[#3f3f41] focus:border-yellow"
+              className="w-full p-2 border rounded bg-[#010102] placeholder-[#eaeaeab9] text-[#F6F6F6] outline-none border-[#3f3f41] focus:border-yellow"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
