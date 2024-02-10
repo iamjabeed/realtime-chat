@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -20,6 +22,7 @@ body,
 body {
   color: var(--white-color);
   background: var(--black-color);
+  font-family: "Roboto", sans-serif;
 }
 
 /* dark mode looking scrollbar */

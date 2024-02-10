@@ -12,12 +12,19 @@ const Login = () => {
   };
 
   return (
-    <div className="max-w-md flex flex-col items-center justify-center min-w-96 mx-auto">
-      <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
-        <h1 className="text-3xl font-semibold text-center text-gray-300">
-          Login
-          <span className="text-blue-500"> ChatApp</span>
-        </h1>
+    <div className="w-full sm:max-w-md 2xl:max-w-xl flex flex-col items-center justify-center mx-auto h-screen px-4">
+      <div className="w-full rounded-lg border border-gray-400/15 p-4">
+        <div className="">
+          <h1 className="text-2xl font-extrabold text-gray-500 mb-2">
+            Welcome to{" "}
+            <span className="text-3xl font-bold text-pink">SwiftLine</span>
+          </h1>
+
+          <h2 className="text-lg text-gray-500">
+            Your Ultimate Chat Experience
+          </h2>
+          <h2 class="mb-2 text-lg text-gray-500">Please sign in to continue</h2>
+        </div>
 
         <form onSubmit={handleSubmit}>
           <div>
@@ -27,7 +34,7 @@ const Login = () => {
             <input
               type="text"
               placeholder="Enter username"
-              className="w-full input input-bordered h-10"
+              className="w-full p-2 border rounded bg-[#010102] placeholder-[#eaeaeab9]  text-[#F6F6F6] outline-none border-[#3f3f41] focus:border-yellow"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -40,26 +47,32 @@ const Login = () => {
             <input
               type="password"
               placeholder="Enter Password"
-              className="w-full input input-bordered h-10"
+              className="w-full p-2 border rounded mb-4 bg-[#010102] placeholder-[#eaeaeab9]  text-[#F6F6F6] outline-none border-[#3f3f41] focus:border-yellow"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <Link
-            to="/signup"
-            className="text-sm  hover:underline hover:text-blue-600 my-2 inline-block"
-          >
-            {"Don't"} have an account? Create a new account.
-          </Link>
 
           <div>
-            <button className="btn btn-block btn-sm mt-2" disabled={loading}>
+            <button
+              className="w-full bg-yellow hover:bg-[#ecf400e5] transition-colors text-black border-none outline-none px-4 py-2 rounded cursor-pointer my-[1rem] text-base font-semibold"
+              disabled={loading}
+            >
               {loading ? (
                 <span className="loading loading-spinner"></span>
               ) : (
                 "Login"
               )}
             </button>
+          </div>
+
+          <div className="mt-2">
+            <p className="text-base 2xl:text-lg  text-gray-300">
+              Don't have an account?{" "}
+              <Link to={"/signup"} className="text-pink hover:underline ">
+                Create an account
+              </Link>
+            </p>
           </div>
         </form>
       </div>
