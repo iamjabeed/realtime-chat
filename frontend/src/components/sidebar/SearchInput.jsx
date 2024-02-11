@@ -26,18 +26,21 @@ const SearchInput = () => {
     } else toast.error("No such user found!");
   };
   return (
-    <form onSubmit={handleSubmit} className="flex items-center gap-2">
-      <input
-        type="text"
-        placeholder="Search…"
-        className="input input-bordered rounded-full"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <button type="submit" className="btn btn-circle bg-sky-500 text-white">
-        <IoSearchSharp className="w-6 h-6 outline-none" />
-      </button>
-    </form>
+    <section className="pb-4">
+      <h4 className="text-lg font-semibold py-2">Chats</h4>
+      <form onSubmit={handleSubmit} className="relative">
+        <input
+          type="text"
+          placeholder="Search or start a new chat"
+          className="w-full p-2 border rounded bg-[#1a1a1a] placeholder-[#eaeaeab0] text-[#F6F6F6] outline-none border-transparent border-b-[#6e6e6e]"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <button type="submit" className="text-white absolute right-2 top-2">
+          <IoSearchSharp className="outline-none cursor-pointer" size={24} />
+        </button>
+      </form>
+    </section>
   );
 };
 export default SearchInput;

@@ -33,7 +33,9 @@ const SignUp = () => {
           <h2 className="text-lg text-gray-500">
             Your Ultimate Chat Experience
           </h2>
-          <h2 class="mb-2 text-lg text-gray-500">Please sign up to continue</h2>
+          <h2 className="mb-2 text-lg text-gray-500">
+            Please sign up to continue
+          </h2>
         </div>
 
         <form onSubmit={handleSubmit}>
