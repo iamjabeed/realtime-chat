@@ -25,9 +25,8 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-/* dark mode looking scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
@@ -35,12 +34,8 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #121212;
+  background: var(--pink-color);
   border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #242424;
 }
 
 /* SHAKE ANIMATION ON HORIZONTAL DIRECTION */
@@ -81,12 +76,12 @@ body {
   display: block;
   border-radius: 9999px;
   --tw-bg-opacity: 1;
-  background-color: red;
+  background-color: rgb(68, 66, 66);
   outline-style: solid;
   outline-width: 2px;
-  outline-color: red;
-  width: 15%;
-  height: 15%;
-  top: 10%;
+  outline-color: rgb(80, 77, 77);
+  width: 12%;
+  height: 12%;
+  top: 4%;
   right: 10%;
 }
