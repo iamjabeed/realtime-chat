@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { TiMessages } from "react-icons/ti";
+// import { TiMessages } from "react-icons/ti";
 
 import MessageInput from "./MessageInput";
 import Messages from "./Messages";
@@ -48,15 +48,34 @@ const MessageContainer = () => {
 };
 export default MessageContainer;
 
+import { TiMessages } from "react-icons/ti";
+import { FaLock } from "react-icons/fa";
+import { RiSecurePaymentLine } from "react-icons/ri";
+
 const NoChatSelected = () => {
   const { authUser } = useAuthContext();
 
   return (
-    <div className="flex items-center justify-center w-full h-full">
-      <div className="px-4 text-center sm:text-lg md:text-xl text-gray-200 font-semibold flex flex-col items-center gap-2">
-        <p>Welcome 👋 {authUser?.fullName} ❄</p>
-        <p>Select a chat to start messaging</p>
-        <TiMessages className="text-3xl md:text-6xl text-center" />
+    <div className="flex flex-col items-center justify-center w-full h-full">
+      <div className="px-4  sm:text-lg md:text-xl text-gray-200 font-semibold flex flex-col items-center gap-2 text-left">
+        <div className="text-left">
+          <p className="text-gray-400">
+            Welcome 👋{" "}
+            <span className="text-white">{authUser?.fullName} ❄</span>
+          </p>
+          <p className="text-gray-400">Select a chat to start messaging</p>
+        </div>
+        <TiMessages className="text-2xl md:text-5xl mb-4" />
+        <div className="text-left">
+          <div className="flex items-center text-gray-400 gap-2">
+            <FaLock className="text-xl" />
+            <span>Your Chats are Secure</span>
+          </div>
+          <div className="flex items-center text-gray-400 gap-2">
+            <RiSecurePaymentLine className="text-xl" />
+            <span>Safe and Reliable Messaging</span>
+          </div>
+        </div>
       </div>
     </div>
   );
