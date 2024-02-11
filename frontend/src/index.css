@@ -26,16 +26,16 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 3px;
 }
-
+/* 
 ::-webkit-scrollbar-track {
   background: #555;
-}
+} */
 
 ::-webkit-scrollbar-thumb {
   background: var(--pink-color);
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 /* SHAKE ANIMATION ON HORIZONTAL DIRECTION */

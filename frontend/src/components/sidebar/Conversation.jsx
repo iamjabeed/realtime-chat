@@ -10,7 +10,7 @@ const Conversation = ({ conversation, lastIndex }) => {
   return (
     <>
       <div
-        className={`flex gap-3 items-center hover:bg-[#212020] rounded p-2  py-2 cursor-pointer ${
+        className={`flex gap-3 items-center hover:bg-[#212020] rounded p-2  py-2 cursor-pointer mr-4 ${
           activeConversation ? "bg-pink" : ""
         }`}
         onClick={() => setSelectedConversation(conversation)}
@@ -21,7 +21,7 @@ const Conversation = ({ conversation, lastIndex }) => {
           </div>
         </div>
 
-        <div className="flex flex-col flex-1">
+        <div className="flex flex-col flex-1 ">
           <div className="flex gap-3 justify-between">
             <p className="font-bold text-gray-200 capitalize">
               {conversation?.fullName}

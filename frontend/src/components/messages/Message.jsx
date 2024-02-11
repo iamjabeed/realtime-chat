@@ -11,14 +11,19 @@ const Message = ({ message }) => {
   const profilePic = fromMe
     ? authUser.profilePic
     : selectedConversation?.profilePic;
-  const bubbleBgColor = fromMe ? "bg-blue-500" : "";
+  const bubbleBgColor = fromMe ? "bg-pink" : "";
   const shakeClass = message.shouldShake ? "shake" : "";
 
   function extractTime(dateString) {
     const date = new Date(dateString);
-    const hours = padZero(date.getHours());
+    let hours = padZero(date.getHours());
     const minutes = padZero(date.getMinutes());
-    return `${hours}:${minutes}`;
+    const amOrPm = hours >= 12 ? "PM" : "AM";
+
+    // Convert hours to 12-hour format
+    hours = hours % 12 || 12;
+
+    return `${hours}:${minutes} ${amOrPm}`;
   }
 
   // Helper function to pad single-digit numbers with a leading zero

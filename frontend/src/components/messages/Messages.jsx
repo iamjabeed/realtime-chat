@@ -23,7 +23,9 @@ const Messages = () => {
         [...Array(3)].map((_, index) => <MessageSkeleton key={index} />)}
 
       {!loading && messages.length === 0 && (
-        <p className="text-center">Send a message to start the conversation</p>
+        <p className="flex justify-center items-center h-full text-center">
+          Send a message to start the conversation
+        </p>
       )}
 
       {!loading &&
