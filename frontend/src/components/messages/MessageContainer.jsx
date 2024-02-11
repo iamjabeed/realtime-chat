@@ -5,25 +5,38 @@ import MessageInput from "./MessageInput";
 import Messages from "./Messages";
 import useConversation from "../../zustand/useConversation";
 import { useAuthContext } from ".././../context/AuthContext";
+import { useSocketContext } from "../../context/SocketContext";
 
 const MessageContainer = () => {
   const { selectedConversation, setSelectedConversation } = useConversation();
+
+  const { onlineUsers } = useSocketContext();
+  const isOnline = onlineUsers.includes(selectedConversation?._id);
 
   useEffect(() => {
     return () => setSelectedConversation(null);
   }, []);
   return (
-    <div className="bg-[#0a0a0a]  px-4  flex flex-col flex-1 ">
+    <div className="bg-[#0a0a0a] hidden sm:flex flex-col flex-1">
       {!selectedConversation ? (
         <NoChatSelected />
       ) : (
         <>
           {/* Header */}
-          <div className="bg-slate-500 px-4 py-2 mb-2">
-            <span className="label-text">To:</span>{" "}
-            <span className="text-gray-900 font-bold">
-              {selectedConversation?.fullName}
-            </span>
+          <div className="bg-black px-4 py-2 mb-2  h-14 flex items-center gap-2">
+            <div className="w-10 rounded-full">
+              <img src={selectedConversation?.profilePic} alt="user avatar" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-white font-bold">
+                {selectedConversation?.fullName}
+              </span>
+              {isOnline ? (
+                <span className="text-gray-300 italic">online</span>
+              ) : (
+                <span className="text-gray-300 italic">offline</span>
+              )}
+            </div>
           </div>
 
           <Messages />
